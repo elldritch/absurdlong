@@ -1,0 +1,4 @@
+[package]
+edition = "2021"
+name = "absurdlong"
+version = "0.1.0"

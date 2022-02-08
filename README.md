@@ -15,7 +15,7 @@ First, some obvious bounds:
 
 Absurdle works by dividing all target words into one of 243 buckets depending on the guess response (each letter can have 1 of 3 responses, and there are 5 letters, therefore 3^5 guess responses), and picking the bucket with the most remaining target words.
 
-<!-- Is it sufficient to always greedily pick the largest bucket? -->
+<!-- Is it sufficient to always greedily pick the largest bucket? I think not. We can't even use it as an search priority heuristic, because the ordering is not pre-determined. -->
 
 Naively, we can search every possible game by trying every possible start word and playing out every possible tree.
 
