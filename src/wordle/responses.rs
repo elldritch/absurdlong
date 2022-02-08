@@ -1,7 +1,8 @@
 use self::LetterResponse::*;
+use crate::WORD_LENGTH;
 use std::fmt;
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, Hash, Eq, PartialEq)]
 pub enum LetterResponse {
   Correct,
   IncorrectPosition,
@@ -18,15 +19,15 @@ impl fmt::Debug for LetterResponse {
   }
 }
 
-pub type WordResponse = [LetterResponse; 5];
+pub type WordResponse = [LetterResponse; WORD_LENGTH];
 
-pub const POSSIBLE_RESPONSES_COUNT: usize = usize::pow(3, 5);
+pub const POSSIBLE_RESPONSES_COUNT: usize = usize::pow(3, WORD_LENGTH as u32);
 
 pub const POSSIBLE_RESPONSES: [WordResponse; POSSIBLE_RESPONSES_COUNT] = possible_responses();
 
 const fn possible_responses() -> [WordResponse; POSSIBLE_RESPONSES_COUNT] {
   let mut ret: [WordResponse; POSSIBLE_RESPONSES_COUNT] =
-    [[IncorrectLetter; 5]; POSSIBLE_RESPONSES_COUNT];
+    [[IncorrectLetter; WORD_LENGTH]; POSSIBLE_RESPONSES_COUNT];
   let mut i = 0;
   while i < POSSIBLE_RESPONSES_COUNT {
     ret[i] = [

@@ -1,4 +1,6 @@
-pub type Word = [char; 5];
+pub const WORD_LENGTH: usize = 5;
+
+pub type Word = [char; WORD_LENGTH];
 
 pub const GUESS_WORDS_COUNT: usize = 10657;
 
